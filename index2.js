@@ -2,8 +2,6 @@ const fs = require('fs');
 const Benchmark = require('benchmark');
 const base64url = require('base64url');
 const crypto = require('crypto');
-const niUri = require('ni-uri');
-const xor = require('buffer-xor/inplace');
 
 const suite = new Benchmark.Suite();
 
@@ -16,7 +14,10 @@ const mergeEventHashes = result.map(e => {
   return event.eventHash;
 });
 
+let eventHashBuffers = [];
+
 function loop1() {
+  mergeEventHashes.sort((a, b) => a.localeCompare(b));
   const baseHash = _sha256(mergeEventHashes.join(''));
   const result = [];
   for(const hash of mergeEventHashes) {
@@ -25,32 +26,52 @@ function loop1() {
 }
 
 function loop2() {
+  eventHashBuffers = [];
   const baseHashBuffer = _createBaseHashBuffer(mergeEventHashes);
   const result = [];
-  for(const hash of mergeEventHashes) {
-    result.push(_xorWithBaseHash(baseHashBuffer, hash));
+  for(let i = 0; i < eventHashBuffers.length; ++i) {
+    result.push(_xor(baseHashBuffer, eventHashBuffers[i]));
   }
-}
-
-function _createBaseHashBuffer(mergeEventHashes) {
-  const {value} = niUri.parse(mergeEventHashes[0], true);
-  const buf = base64url.toBuffer(value);
-  for(let i = 1; i < mergeEventHashes.length; ++i) {
-    const {value} = niUri.parse(mergeEventHashes[i], true);
-    xor(buf, base64url.toBuffer(value));
-  }
-  return buf;
 }
 
 function _sha256(x) {
   return crypto.createHash('sha256').update(x).digest('hex');
 }
 
-function _xorWithBaseHash(baseHashBuffer, eventHash) {
-  const {value} = niUri.parse(eventHash, true);
-  const buf = base64url.toBuffer(value);
-  xor(buf, baseHashBuffer);
+function _createBaseHashBuffer(mergeEventHashes) {
+  const p = _parseHash(mergeEventHashes[0]);
+  eventHashBuffers.push(p);
+  const buf = p.slice();
+  for(let i = 1; i < mergeEventHashes.length; ++i) {
+    const p = _parseHash(mergeEventHashes[i]);
+    eventHashBuffers.push(p);
+    _xor(buf, p);
+  }
   return buf;
+}
+
+function _xorWithBaseHash(baseHashBuffer, eventHash) {
+  const buf = _parseHash(eventHash);
+  _xor(buf, baseHashBuffer);
+  return buf;
+}
+
+function _xor(b1, b2) {
+  const len = b1.length;
+  for(let i = 0; i < len; ++i) {
+    b1[i] ^= b2[i];
+  }
+
+/*
+  const ub1 = new Uint32Array(b1.buffer, b1.byteOffset, b1.byteLength / 4);
+  const ub2 = new Uint32Array(b2.buffer, b2.byteOffset, b2.byteLength / 4);
+  for(let i = 0; i < ub1.length; ++i) {
+    ub1[i] ^= ub2[i];
+  }*/
+}
+
+function _parseHash(hash) {
+  return new Buffer(hash.substr(14));
 }
 
 suite
