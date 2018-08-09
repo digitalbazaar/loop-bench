@@ -30,7 +30,7 @@ function loop2() {
   const baseHashBuffer = _createBaseHashBuffer(mergeEventHashes);
   const result = [];
   for(let i = 0; i < eventHashBuffers.length; ++i) {
-    result.push(_xor(baseHashBuffer, eventHashBuffers[i]));
+    result.push(_xor(eventHashBuffers[i], baseHashBuffer));
   }
 }
 
@@ -47,12 +47,6 @@ function _createBaseHashBuffer(mergeEventHashes) {
     eventHashBuffers.push(p);
     _xor(buf, p);
   }
-  return buf;
-}
-
-function _xorWithBaseHash(baseHashBuffer, eventHash) {
-  const buf = _parseHash(eventHash);
-  _xor(buf, baseHashBuffer);
   return buf;
 }
 
