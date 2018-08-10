@@ -1,0 +1,53 @@
+{
+  "nested": {
+    "Continuity2017": {
+      "fields": {
+        "creator": {
+          "type": "string",
+          "id": 1
+        }
+      }
+    },
+    "Event": {
+      "fields": {
+        "parentHash": {
+          "type": "string",
+          "rule": "repeated",
+          "id": 1
+        },
+        "treeHash": {
+          "type": "string",
+          "id": 2
+        },
+        "type": {
+          "type": "string",
+          "id": 3
+        }
+      }
+    },
+    "Meta": {
+      "fields": {
+        "continuity2017": {
+          "type": "Continuity2017",
+          "id": 1
+        }
+      }
+    },
+    "ContinuityEvent": {
+      "fields": {
+        "eventHash": {
+          "type": "string",
+          "id": 1
+        },
+        "event": {
+          "type": "Event",
+          "id": 2
+        },
+        "meta": {
+          "type": "Meta",
+          "id": 3
+        }
+      }
+    }
+  }
+}

@@ -10,6 +10,9 @@
   "license": "ISC",
   "dependencies": {
     "base64url": "^3.0.0",
-    "benchmark": "^2.1.4"
+    "benchmark": "^2.1.4",
+    "ioredis": "^3.2.2",
+    "protobufjs": "~6.8.8",
+    "redis": "^2.8.0"
   }
 }
