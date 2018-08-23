@@ -29,12 +29,22 @@ function loop5() {
   return JSON.parse(justParse);
 }
 
+function loop6() {
+  let i = 0;
+  const list = new Array(opJsons.length);
+  for(const json of opJsons) {
+    list[i++] = JSON.parse(json);
+  }
+  return list;
+}
+
 suite
   .add('.map(JSON.parse) loop', () => loop1())
   .add('for of JSON.parse loop', () => loop2())
   .add('JSON.parse once string concat', () => loop3())
   .add('JSON.parse once template string', () => loop4())
   .add('JSON.parse once just parse', () => loop5())
+  .add('prealloc array JSON.parse loop', () => loop6())
   .on('cycle', event => {
     console.log(String(event.target));
   })
