@@ -1,4 +1,5 @@
 const fs = require('fs');
+const msgpack = require('msgpack5')();
 const protobuf = require("protobufjs");
 const Benchmark = require('benchmark');
 
@@ -36,6 +37,7 @@ const buffer = AwesomeMessage.encode(message).finish();
 
 const encodedProtobuf = encodeProtobuf();
 const encodedProtobufBuffers = encodeProtobufBuffers();
+const encodedMsgPackBuffers = encodeMsgpack();
 
 // console.log('ZZZZZZZZ', encodedProtobuf);
 
@@ -48,6 +50,14 @@ const object = AwesomeMessage.toObject(d, {
   // see ConversionOptions
 });
 // console.log('OOOOOO', object);
+
+function encodeMsgpack() {
+  const events = [];
+  for(const event of eventObjects) {
+    events.push(msgpack.encode(event));
+  }
+  return events;
+}
 
 function encodeProtobuf() {
   const events = [];
@@ -72,6 +82,13 @@ function decodeProtobuf() {
   for(const event of encodedProtobuf) {
     events.push(AwesomeMessage.toObject(
       AwesomeMessage.decode(Buffer.from(event, 'binary'))));
+  }
+}
+
+function decodeMsgPackBuffers() {
+  const events = [];
+  for(const event of encodedMsgPackBuffers) {
+    events.push(msgpack.decode(event));
   }
 }
 
@@ -100,9 +117,11 @@ function _parse({events}) {
 
 suite
   .add('encode JSON', () => encodeJson())
+  .add('encode Msgpack', () => encodeMsgpack())
   .add('encode Protobuf', () => encodeProtobuf())
   .add('encode Protobuf Buffers', () => encodeProtobufBuffers())
   .add('parse JSON', () => decodeJson())
+  .add('parse msgPack', () => decodeMsgPackBuffers())
   .add('decode Protobuf', () => decodeProtobuf())
   .add('decode Protobuf Buffers', () => decodeProtobufBuffers())
   .on('cycle', event => {
