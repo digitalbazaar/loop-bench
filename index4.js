@@ -1,5 +1,6 @@
 const fs = require('fs');
 const protobuf = require("protobufjs");
+const vpack = require('node-velocypack');
 const Benchmark = require('benchmark');
 
 const suite = new Benchmark.Suite();
@@ -36,6 +37,7 @@ const buffer = AwesomeMessage.encode(message).finish();
 
 const encodedProtobuf = encodeProtobuf();
 const encodedProtobufBuffers = encodeProtobufBuffers();
+const encodedVelocyPackBuffers = encodeVelocyPack();
 
 // console.log('ZZZZZZZZ', encodedProtobuf);
 
@@ -67,6 +69,14 @@ function encodeProtobufBuffers() {
   return events;
 }
 
+function encodeVelocyPack() {
+  const events = [];
+  for(const event of eventObjects) {
+    events.push(vpack.encode(event));
+  }
+  return events;
+}
+
 function decodeProtobuf() {
   const events = [];
   for(const event of encodedProtobuf) {
@@ -79,6 +89,13 @@ function decodeProtobufBuffers() {
   const events = [];
   for(const event of encodedProtobufBuffers) {
     events.push(AwesomeMessage.toObject(AwesomeMessage.decode(event)));
+  }
+}
+
+function decodeVelocyPackBuffers() {
+  const events = [];
+  for(const event of encodedVelocyPackBuffers) {
+    events.push(vpack.decode(event));
   }
 }
 
@@ -100,11 +117,13 @@ function _parse({events}) {
 
 suite
   .add('encode JSON', () => encodeJson())
+  .add('encode VelocyPack', () => encodeVelocyPack())
   .add('encode Protobuf', () => encodeProtobuf())
   .add('encode Protobuf Buffers', () => encodeProtobufBuffers())
   .add('parse JSON', () => decodeJson())
   .add('decode Protobuf', () => decodeProtobuf())
   .add('decode Protobuf Buffers', () => decodeProtobufBuffers())
+  .add('decode VelocyPack Buffers', () => decodeVelocyPackBuffers())
   .on('cycle', event => {
     console.log(String(event.target));
   })
