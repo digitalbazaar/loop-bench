@@ -1,3 +1,4 @@
+const assert = require('assert');
 const fs = require('fs');
 const msgpack = require('msgpack5')();
 const protobuf = require("protobufjs");
@@ -5,83 +6,87 @@ const Benchmark = require('benchmark');
 
 const suite = new Benchmark.Suite();
 
-const result = fs.readFileSync('array.txt').toString().split("\n");
+const mergeEventStrings = fs.readFileSync('array.txt').toString().split("\n");
 // remove the last undefined record
-result.pop();
+mergeEventStrings.pop();
 
-const eventObjects = _parse({events: result});
+const mergeEventObjects = _parse({events: mergeEventStrings});
 
 function encodeJson() {
   const events = [];
-  for(const event of eventObjects) {
+  for(const event of mergeEventObjects) {
     events.push(JSON.stringify(event));
   }
 }
 
-const jsonDescriptor = require("./continuity-event.json"); // exemplary for node
-const root = protobuf.Root.fromJSON(jsonDescriptor);
+// setup and test Protobuf
+// load descriptor for Continuity merge events
+const root = protobuf.Root.fromJSON(require("./continuity-event.json"));
 // Obtain a message type
-const AwesomeMessage = root.lookupType("ContinuityEvent");
-const errMsg = AwesomeMessage.verify(eventObjects[0]);
+const ContinuityMessage = root.lookupType("ContinuityEvent");
+// ensure that the schema is valid for the data
+const errMsg = ContinuityMessage.verify(mergeEventObjects[0]);
 if(errMsg) {
   throw Error(errMsg);
 }
-const message = AwesomeMessage.create(eventObjects[0]);
-// console.log('MMMMMM', message);
-
+const message = ContinuityMessage.create(mergeEventObjects[0]);
 // Encode a message to an Uint8Array (browser) or Buffer (node)
-const buffer = AwesomeMessage.encode(message).finish();
-// ... do something with buffer
+const buffer = ContinuityMessage.encode(message).finish();
+// send the buffer somewhere: redis(after encoding), over the wire
+const mergeEventZeroMessage = ContinuityMessage.decode(buffer);
+assert.deepEqual(ContinuityMessage.toObject(
+  mergeEventZeroMessage), mergeEventObjects[0]);
+// end Protobuf testing
 
-// console.log('BBBBBBB', buffer.toString('base64'));
-
-const encodedProtobuf = encodeProtobuf();
+// encode protobuf buffers into a variety of string encodings
+const encodedProtobuf = {base64: '', binary: '', hex: ''};
+Object.keys(encodedProtobuf).forEach(k =>
+  encodedProtobuf[k] = encodeProtobuf(k));
+// encode objects into Buffers
 const encodedProtobufBuffers = encodeProtobufBuffers();
+
 const encodedMsgPackBuffers = encodeMsgpack();
-
-// console.log('ZZZZZZZZ', encodedProtobuf);
-
-// Decode an Uint8Array (browser) or Buffer (node) to a message
-const d = AwesomeMessage.decode(buffer);
-const object = AwesomeMessage.toObject(d, {
-  longs: String,
-  enums: String,
-  bytes: String,
-  // see ConversionOptions
-});
-// console.log('OOOOOO', object);
 
 function encodeMsgpack() {
   const events = [];
-  for(const event of eventObjects) {
+  for(const event of mergeEventObjects) {
     events.push(msgpack.encode(event));
   }
   return events;
 }
 
-function encodeProtobuf() {
+function encodeProtobuf(encoding) {
   const events = [];
-  for(const event of eventObjects) {
-    const message = AwesomeMessage.create(event);
-    events.push(AwesomeMessage.encode(message).finish().toString('binary'));
+  for(const event of mergeEventObjects) {
+    const message = ContinuityMessage.create(event);
+    events.push(ContinuityMessage.encode(message).finish().toString(encoding));
   }
   return events;
 }
 
 function encodeProtobufBuffers() {
   const events = [];
-  for(const event of eventObjects) {
-    const message = AwesomeMessage.create(event);
-    events.push(AwesomeMessage.encode(message).finish());
+  for(const event of mergeEventObjects) {
+    const message = ContinuityMessage.create(event);
+    events.push(ContinuityMessage.encode(message).finish());
   }
   return events;
 }
 
-function decodeProtobuf() {
+// decode string encoded Protobuf
+function decodeProtobuf(encoding) {
   const events = [];
-  for(const event of encodedProtobuf) {
-    events.push(AwesomeMessage.toObject(
-      AwesomeMessage.decode(Buffer.from(event, 'binary'))));
+  for(const event of encodedProtobuf[encoding]) {
+    events.push(ContinuityMessage.toObject(
+      ContinuityMessage.decode(Buffer.from(event, encoding))));
+  }
+}
+
+// decode Buffers
+function decodeProtobufBuffers() {
+  const events = [];
+  for(const event of encodedProtobufBuffers) {
+    events.push(ContinuityMessage.toObject(ContinuityMessage.decode(event)));
   }
 }
 
@@ -92,19 +97,11 @@ function decodeMsgPackBuffers() {
   }
 }
 
-function decodeProtobufBuffers() {
-  const events = [];
-  for(const event of encodedProtobufBuffers) {
-    events.push(AwesomeMessage.toObject(AwesomeMessage.decode(event)));
-  }
-}
-
 function decodeJson() {
   const events = [];
-  for(const event of result) {
+  for(const event of mergeEventStrings) {
     events.push(JSON.parse(event));
   }
-  // console.log('EEEEEEEE', eventMap);
 }
 
 function _parse({events}) {
@@ -116,14 +113,18 @@ function _parse({events}) {
 }
 
 suite
-  .add('encode JSON', () => encodeJson())
+  .add('encode JSON.stringify', () => encodeJson())
   .add('encode Msgpack', () => encodeMsgpack())
-  .add('encode Protobuf', () => encodeProtobuf())
-  .add('encode Protobuf Buffers', () => encodeProtobufBuffers())
-  .add('parse JSON', () => decodeJson())
-  .add('parse msgPack', () => decodeMsgPackBuffers())
-  .add('decode Protobuf', () => decodeProtobuf())
+  .add('encode Protobuf to Buffer', () => encodeProtobufBuffers())
+  .add('encode Protobuf binary encoded string', () => encodeProtobuf('binary'))
+  .add('encode Protobuf base64 encoded string', () => encodeProtobuf('base64'))
+  .add('encode Protobuf hex encoded string', () => encodeProtobuf('hex'))
+  .add('decode JSON.parse', () => decodeJson())
+  .add('decode msgPack', () => decodeMsgPackBuffers())
   .add('decode Protobuf Buffers', () => decodeProtobufBuffers())
+  .add('decode Protobuf binary encoded string', () => decodeProtobuf('binary'))
+  .add('decode Protobuf binary encoded string', () => decodeProtobuf('base64'))
+  .add('decode Protobuf binary encoded string', () => decodeProtobuf('hex'))
   .on('cycle', event => {
     console.log(String(event.target));
   })
