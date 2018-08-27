@@ -7,6 +7,7 @@ Fastest is sha256
 ```
 
 # index4.js encode/decode javascript objects
+Protobuf requires a [schema](./continuity-event.json).
 ```
 20180827
 
