@@ -112,6 +112,10 @@ function _parse({events}) {
   return result;
 }
 
+console.log('--------------------------------------------------------');
+console.log(`Each op is processing ${mergeEventStrings.length} items.`);
+console.log('--------------------------------------------------------');
+
 suite
   .add('encode JSON.stringify', () => encodeJson())
   .add('encode Msgpack', () => encodeMsgpack())

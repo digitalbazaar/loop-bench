@@ -13,6 +13,9 @@ Fastest is sha256
 you@yourmachine:~/dev/loop-bench$ node --version
 v10.9.0
 
+--------------------------------------------------------
+Each op is processing 9605 items.
+--------------------------------------------------------
 encode JSON.stringify x 20.09 ops/sec ±1.77% (37 runs sampled)
 encode Msgpack x 2.82 ops/sec ±3.13% (11 runs sampled)
 encode Protobuf to Buffer x 23.15 ops/sec ±3.21% (42 runs sampled)
