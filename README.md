@@ -31,3 +31,13 @@ decode Protobuf binary encoded string x 23.99 ops/sec ±3.00% (43 runs sampled)
 decode Protobuf binary encoded string x 25.18 ops/sec ±2.41% (44 runs sampled)
 Fastest is decode Protobuf Buffers
 ```
+
+# index6.js canonicalize vs json.canonize
+```
+node --version
+v10.9.0
+
+canonicalize x 110,961 ops/sec ±0.75% (92 runs sampled)
+normalize x 1,394 ops/sec ±6.65% (64 runs sampled)
+Fastest is canonicalize
+```
