@@ -41,3 +41,13 @@ canonicalize x 110,961 ops/sec ±0.75% (92 runs sampled)
 normalize x 1,394 ops/sec ±6.65% (64 runs sampled)
 Fastest is canonicalize
 ```
+
+# index8.js string.length vs Buffer.byteLength
+```
+node --version
+v10.14.2
+
+string.length x 17,822 ops/sec ±1.08% (85 runs sampled)
+buffer.byteLength x 482 ops/sec ±0.32% (90 runs sampled)
+Fastest is string.length
+```
