@@ -12,6 +12,7 @@
     "base64url": "^3.0.0",
     "benchmark": "^2.1.4",
     "canonicalize": "^1.0.0",
+    "fast-json-stringify": "^1.10.0",
     "ioredis": "^3.2.2",
     "jsonld": "^1.0.4",
     "msgpack5": "^4.2.0",

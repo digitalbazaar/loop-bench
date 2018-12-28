@@ -1,0 +1,33 @@
+{
+    "event": {
+        "@context": "https://w3id.org/webledger/v1",
+        "type": "ContinuityMergeEvent",
+        "parentHash": [
+            "zQmPkZrQs9dyezAQkVniqkMjm5nP3cdWFBzNsnnFLrsNf9u",
+            "zQmb6eicGxT6FAAZdxEzam2JpPu8ajiMJYhzPnhgHJJKh8f",
+            "zQmYDcw6hXTZHCYaPyuGLCo8jcNREidQs4ikwKdVyS5uwKA",
+            "zQmdxvSCwPjTvx3SAN2XHZ4uQpHKpbnHmns9BF8uZASW6Lx",
+            "zQmc6b7weYQEu2NBDK9DB4HBc4bt2qQGbkvkEZBW6ajJ5F7",
+            "zQmePs3zy2fLPEsBXqGn2LPWSGYbzPy7CZTTz1f2ng3ysph",
+            "zQma45eMXmzKBXYwLdU7FvAEW3ekMy4fJjqEQVhYQFgwYAP"
+        ],
+        "treeHash": "zQmPkZrQs9dyezAQkVniqkMjm5nP3cdWFBzNsnnFLrsNf9u",
+        "proof": {
+            "type": "Ed25519Signature2018",
+            "created": "2018-12-21T23:40:20Z",
+            "creator": "https://bedrock.localhost:18443/consensus/continuity2017/voters/z6MkkabTusFkLnquxwHwCm28v59UX3P9Pn5scvc7fCaNvWUL",
+            "jws": "eyJhbGciOiJFZERTQSIsImI2NCI6ZmFsc2UsImNyaXQiOlsiYjY0Il19..JJ5c7mF7ru9XhPtrNqj1s6J74yqOC0HcNyK_Wa0OcfDaiODZFIJ2dXIrc_qqqvTWynIqJid6yXkKsGAzyi_HDQ"
+        }
+    },
+    "meta": {
+        "consensus": false,
+        "continuity2017": {
+            "creator": "https://bedrock.localhost:18443/consensus/continuity2017/voters/z6MkkabTusFkLnquxwHwCm28v59UX3P9Pn5scvc7fCaNvWUL",
+            "generation": 122,
+            "type": "m"
+        },
+        "eventHash": "zQmUCdTKsoMxCvT3GuJrsp5P1ym7UVD3WKabLUk9qNLzWFa",
+        "created": 1545435620596,
+        "updated": 1545435620596
+    }
+}
