@@ -1,3 +1,7 @@
+/*
+ * Compare jsonld.expand on an operation with schema.org context vs one with the
+ * much smaller test-v1 context.
+ */
 const fs = require('fs');
 const jsonld = require('jsonld');
 const path = require('path');
