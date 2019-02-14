@@ -1,0 +1,20 @@
+{
+  "@context": {
+    "id": "@id",
+    "type": "@type",
+    "cred": "https://w3id.org/credentials#",
+    "dhs": "https://w3id.org/dhs#",
+    "schema": "http://schema.org/",
+    "Concert": "schema:Concert",
+    "Offer": "schema:Offer",
+    "Credential": "cred:Credential",
+    "claim": {"@id": "cred:claim", "@type": "@id"},
+    "location": "schema:location",
+    "name": "schema:name",
+    "offers": "schema:offers",
+    "price": "schema:price",
+    "priceCurrency": "schema:priceCurrency",
+    "startDate": "schema:startDate",
+    "url": "schema:url"
+  }
+}
