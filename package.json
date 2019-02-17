@@ -17,6 +17,7 @@
     "fast-json-stringify": "^1.10.0",
     "ioredis": "^3.2.2",
     "jsonld": "^1.0.4",
+    "lodash": "^4.17.11",
     "msgpack5": "^4.2.0",
     "protobufjs": "~6.8.8",
     "redis": "^2.8.0",
