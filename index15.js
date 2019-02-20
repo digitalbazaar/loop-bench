@@ -1,10 +1,10 @@
 /* Sample output
-encode - Uint8Array short x 2,484,990 ops/sec ±0.78% (87 runs sampled)
-encode - Buffer short x 2,383,750 ops/sec ±0.78% (91 runs sampled)
-encode - Uint8Array medium x 504,028 ops/sec ±0.80% (87 runs sampled)
-encode - Buffer medium x 1,620,050 ops/sec ±0.61% (87 runs sampled)
-encode - Uint8Array long x 43,429 ops/sec ±0.58% (90 runs sampled)
-encode - Buffer long x 431,807 ops/sec ±0.49% (89 runs sampled)
+encode - Uint8Array short x 3,147,648 ops/sec ±0.54% (91 runs sampled)
+encode - Buffer short x 2,695,418 ops/sec ±0.41% (93 runs sampled)
+encode - Uint8Array medium x 738,413 ops/sec ±0.94% (89 runs sampled)
+encode - Buffer medium x 2,000,612 ops/sec ±0.36% (94 runs sampled)
+encode - Uint8Array long x 64,172 ops/sec ±1.21% (89 runs sampled)
+encode - Buffer long x 533,219 ops/sec ±0.44% (89 runs sampled)
 */
 // this implementation use Uint8Array
 const base64url1 = require('./base64url');
