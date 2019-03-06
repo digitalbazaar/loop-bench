@@ -6,7 +6,7 @@ const Benchmark = require('benchmark');
 
 const suite = new Benchmark.Suite();
 
-const mergeEventStrings = fs.readFileSync('array.txt').toString().split("\n");
+const mergeEventStrings = fs.readFileSync('array.txt').toString().split('\n');
 // remove the last undefined record
 mergeEventStrings.pop();
 
@@ -23,7 +23,7 @@ contexts.set(
 // a Continuity merge event
 oneEvent['@context'] = WEB_LEDGER_CONTEXT_V1_URL;
 
-jsonld.documentLoader = async (url) => {
+jsonld.documentLoader = async url => {
   if(contexts.has(url)) {
     return {
       contextUrl: null,
