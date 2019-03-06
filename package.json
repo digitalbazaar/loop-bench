@@ -19,7 +19,10 @@
     "jsonld": "^1.0.4",
     "lodash": "^4.17.11",
     "msgpack5": "^4.2.0",
+    "multibase": "^0.6.0",
+    "multihashes": "^0.4.14",
     "protobufjs": "~6.8.8",
+    "rdf-canonize-native": "^1.1.2",
     "redis": "^2.8.0",
     "web-ledger-context": "^4.0.0"
   }
