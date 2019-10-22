@@ -6,16 +6,18 @@ function loop1(obj, key, value) {
   return [].concat(obj[key]).includes(value);
 }
 function loop2(obj, key, value) {
-  if(Array.isArray(obj[key])) {
-    return obj[key].includes(value);
+  const t = obj[key];
+  if(Array.isArray(t)) {
+    return t.includes(value);
   }
-  return obj[key] === value;
+  return t === value;
 }
 function loop3({obj, key, value}) {
-  if(Array.isArray(obj[key])) {
-    return obj[key].includes(value);
+  const t = obj[key];
+  if(Array.isArray(t)) {
+    return t.includes(value);
   }
-  return obj[key] === value;
+  return t === value;
 }
 
 const testObjAlpha = {type: 'Foo'};
