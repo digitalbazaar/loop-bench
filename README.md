@@ -51,3 +51,23 @@ string.length x 17,822 ops/sec ±1.08% (85 runs sampled)
 buffer.byteLength x 482 ops/sec ±0.32% (90 runs sampled)
 Fastest is string.length
 ```
+# index22.js benchmark veres one did doc generation
+```
+Hardware Overview:
+  Model Name:	MacBook Pro
+  Model Identifier:	MacBookPro12,1
+  Processor Name:	Intel Core i5
+  Processor Speed:	2.9 GHz
+  Number of Processors:	1
+  Total Number of Cores:	2
+  L2 Cache (per Core):	256 KB
+  L3 Cache:	3 MB
+  Hyper-Threading Technology:	Enabled
+  Memory:	16 GB
+================================================================================
+node --version
+v10.15.1
+
+generate did:v1 document x 2,850 ops/sec ±3.52% (75 runs sampled)
+Fastest is generate did:v1 document
+```
