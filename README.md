@@ -53,6 +53,14 @@ Fastest is string.length
 ```
 # index22.js benchmark veres one did doc generation
 ```
+node --version
+v10.15.1
+
+generate did:v1 document x 2,850 ops/sec ±3.52% (75 runs sampled)
+Fastest is generate did:v1 document
+
+================================================================================
+
 Hardware Overview:
   Model Name:	MacBook Pro
   Model Identifier:	MacBookPro12,1
@@ -64,10 +72,4 @@ Hardware Overview:
   L3 Cache:	3 MB
   Hyper-Threading Technology:	Enabled
   Memory:	16 GB
-================================================================================
-node --version
-v10.15.1
-
-generate did:v1 document x 2,850 ops/sec ±3.52% (75 runs sampled)
-Fastest is generate did:v1 document
 ```
