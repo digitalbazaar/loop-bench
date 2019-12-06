@@ -46,10 +46,7 @@ async function getEndpoints({hostnames}) {
 function generate1({deferred}) {
   const didDocs = [];
   veresDriver.generate({}).then(async didDocument => {
-    const {doc} = didDocument;
-    return doc;
-  }).then(d => {
-    didDocs.push(d);
+    didDocs.push(didDocument);
     deferred.resolve();
   }).catch(e => {
     if(e.response) {
@@ -74,11 +71,8 @@ function generate1({deferred}) {
 function generate2({deferred}) {
   const didDocs = [];
   veresDriver.generate({}).then(async didDocument => {
-    const {doc} = didDocument;
-    const [target] = await getEndpoints({hostnames: [hostname]});
-    return target;
-  }).then(d => {
-    didDocs.push(d);
+    didDocs.push(didDocument);
+    await getEndpoints({hostnames: [hostname]});
     deferred.resolve();
   }).catch(e => {
     if(e.response) {
@@ -103,6 +97,7 @@ function generate2({deferred}) {
 function generate3({deferred}) {
   const didDocs = [];
   veresDriver.generate({}).then(async didDocument => {
+    didDocs.push(didDocument);
     const {doc} = didDocument;
     const [target] = await getEndpoints({hostnames: [hostname]});
     let operation = {
@@ -112,9 +107,34 @@ function generate3({deferred}) {
       record: doc
     };
     operation = await veresDriver.attachProofs({operation, options: {didDocument}});
-    axios.post(target.endpoint, operation, {httpsAgent});
-  }).then(d => {
-    didDocs.push(d);
+    await axios.post(target.endpoint, operation, {httpsAgent});
+    deferred.resolve();
+  }).catch(e => {
+    if(e.response) {
+      const {data, status} = e.response;
+      if(status !== 204) {
+        const err = new Error(
+          'Error sending event: server did not respond with 204.');
+        console.error('ERROR', err);
+        console.error('statusCode', status);
+        console.error('body', JSON.stringify(data, null, 2));
+      } else {
+        console.error('ERROR', e);
+        console.error('statusCode', status);
+        console.error('body', JSON.stringify(data, null, 2));
+      }
+    } else {
+      console.error(e);
+    }
+  });
+}
+
+function generate4({deferred}) {
+  const didDocs = [];
+  veresDriver.generate({}).then(async didDocument => {
+    didDocs.push(didDocument);
+    await veresDriver.register({didDocument});
+    ;
     deferred.resolve();
   }).catch(e => {
     if(e.response) {
@@ -153,6 +173,12 @@ suite
     defer: true,
     fn: function(deferred) {
       generate3({deferred});
+    }
+  })
+  .add('generate did document and send did document w/ did-veres-one', {
+    defer: true,
+    fn: function(deferred) {
+      generate4({deferred});
     }
   })
   .on('cycle', event => {
