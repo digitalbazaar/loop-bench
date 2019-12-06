@@ -94,6 +94,9 @@ function generate2({deferred}) {
   });
 }
 
+const arr1 = [];
+const arr2 = [];
+
 function generate3({deferred}) {
   const didDocs = [];
   veresDriver.generate({}).then(async didDocument => {
@@ -106,8 +109,12 @@ function generate3({deferred}) {
       type: 'CreateWebLedgerRecord',
       record: doc
     };
+    const timer1 = getTimer();
     operation = await veresDriver.attachProofs({operation, options: {didDocument}});
+    arr1.push(timer1.elapsed());
+    const timer2 = getTimer();
     await axios.post(target.endpoint, operation, {httpsAgent});
+    arr2.push(timer2.elapsed());
     deferred.resolve();
   }).catch(e => {
     if(e.response) {
@@ -186,5 +193,25 @@ suite
   })
   .on('complete', function() {
     console.log('Fastest is ' + this.filter('fastest').map('name'));
+    console.log(`Attach Proof Duration - ${average(arr1)}`);
+    console.log(`Send Operation Duration - ${average(arr2)}`);
+
   })
   .run();
+
+  function getTimer() {
+    const NS_PER_SEC = 1000000000;
+    const NS_PER_MS = 1000000;
+    const time = process.hrtime();
+
+    return {
+      elapsed() {
+        const [seconds, nanoseconds] = process.hrtime(time);
+        return (seconds * NS_PER_SEC + nanoseconds) / NS_PER_MS;
+      }
+    };
+  }
+
+function average(nums) {
+  return nums.reduce((a, b) => (a + b)) / nums.length;
+}

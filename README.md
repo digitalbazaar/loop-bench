@@ -79,7 +79,9 @@ Hardware Overview:
 node --version
 v12.13.0
 
-generate did document x 785 ops/sec ±11.96% (67 runs sampled)
-generate did document and gather endpoints x 504 ops/sec ±94.83% (70 runs sampled)
-generate did document, gather endpoints, and send did document x 16.98 ops/sec ±6.85% (45 runs sampled)
+generate did document x 887 ops/sec ±6.96% (67 runs sampled)
+generate did document and gather endpoints x 520 ops/sec ±101.30% (72 runs sampled)
+generate did document, gather endpoints, and send did document x 13.35 ops/sec ±7.72% (55 runs sampled)
+generate did document and send did document w/ did-veres-one x 14.46 ops/sec ±5.40% (46 runs sampled)
+Fastest is generate did document
 ```
