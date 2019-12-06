@@ -116,7 +116,8 @@ function generate3({deferred}) {
       record: doc
     };
     const timer1 = getTimer();
-    operation = await veresDriver.attachProofs({operation, options: {didDocument}});
+    operation = await veresDriver.attachProofs(
+      {operation, options: {didDocument}});
     arr1.push(timer1.elapsed());
     const timer2 = getTimer();
     await axios.post(target.endpoint, operation, {httpsAgent});
@@ -147,7 +148,6 @@ function generate4({deferred}) {
   veresDriver.generate({}).then(async didDocument => {
     didDocs.push(didDocument);
     await veresDriver.register({didDocument});
-    ;
     deferred.resolve();
   }).catch(e => {
     if(e.response) {
@@ -207,18 +207,18 @@ suite
   })
   .run();
 
-  function getTimer() {
-    const NS_PER_SEC = 1000000000;
-    const NS_PER_MS = 1000000;
-    const time = process.hrtime();
+function getTimer() {
+  const NS_PER_SEC = 1000000000;
+  const NS_PER_MS = 1000000;
+  const time = process.hrtime();
 
-    return {
-      elapsed() {
-        const [seconds, nanoseconds] = process.hrtime(time);
-        return (seconds * NS_PER_SEC + nanoseconds) / NS_PER_MS;
-      }
-    };
-  }
+  return {
+    elapsed() {
+      const [seconds, nanoseconds] = process.hrtime(time);
+      return (seconds * NS_PER_SEC + nanoseconds) / NS_PER_MS;
+    }
+  };
+}
 
 function average(nums) {
   return nums.reduce((a, b) => (a + b)) / nums.length;
