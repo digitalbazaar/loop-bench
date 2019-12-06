@@ -2,7 +2,12 @@ const axios = require('axios');
 const Benchmark = require('benchmark');
 const v1 = require('did-veres-one');
 const https = require('https');
+const jsigs = require('jsonld-signatures');
 const {WebLedgerClient} = require('web-ledger-client');
+const {
+  suites: {Ed25519Signature2018}
+} = jsigs;
+const {CapabilityInvocation} = require('ocapld');
 
 const suite = new Benchmark.Suite();
 const _silentLogger = {
@@ -35,7 +40,7 @@ async function getEndpoints({hostnames}) {
       const endpoint = await client.getServiceEndpoint(
         {serviceId: 'ledgerOperationService'});
       const targetNode = await client.getTargetNode();
-      const target = {endpoint, targetNode};
+      const target = {endpoint, targetNode, client};
       _cache[hostname] = target;
       return target;
     })();
@@ -109,18 +114,46 @@ function generate3({deferred}) {
     const timer0 = getTimer();
     const [target] = await getEndpoints({hostnames: [hostname]});
     arr0.push(timer0.elapsed());
-    let operation = {
-      '@context': 'https://w3id.org/webledger/v1',
-      creator: target.targetNode,
-      type: 'CreateWebLedgerRecord',
-      record: doc
-    };
     const timer1 = getTimer();
-    operation = await veresDriver.attachProofs(
-      {operation, options: {didDocument}});
+    // let operation = {
+    //   '@context': 'https://w3id.org/webledger/v1',
+    //   creator: target.targetNode,
+    //   type: 'CreateWebLedgerRecord',
+    //   record: doc
+    // };
+    // operation = await veresDriver.attachProofs(
+    //   {operation, options: {didDocument}});
+    const operation = await target.client.wrap({record: doc});
+
+    // FIXME: this is a mock accelerator proof that is only schema validated
+    operation.proof = {
+      type: 'Ed25519Signature2018',
+      created: '2019-01-10T23:10:25Z',
+      capability: 'did:v1:uuid:c37e914a-1e2a-4d59-9668-ee93458fd19a',
+      capabilityAction: 'write',
+      jws: 'MOCKPROOF',
+      proofPurpose: 'capabilityInvocation',
+      verificationMethod: 'did:v1:nym:z279yHL6HsxRzCPU78DAWgZVieb8xPK1mJKJBb' +
+        'P8T2CezuFY#z279tKmToKKMjQ8tsCgTbBBthw5xEzHWL6GCqZyQnzZr7wUo'
+    };
+    // get private key
+    const invokeKeyNode = didDocument.getVerificationMethod({
+      proofPurpose: 'capabilityInvocation'
+    });
+    const capabilityInvocationKey = didDocument.keys[invokeKeyNode.id];
+    const signedOperation = await jsigs.sign(operation, {
+      compactProof: false,
+      documentLoader: v1.documentLoader,
+      suite: new Ed25519Signature2018({key: capabilityInvocationKey}),
+      purpose: new CapabilityInvocation({
+        capability: didDocument.id,
+        capabilityAction: 'create'
+      })
+    });
     arr1.push(timer1.elapsed());
     const timer2 = getTimer();
-    await axios.post(target.endpoint, operation, {httpsAgent});
+    // await axios.post(target.endpoint, signedOperation, {httpsAgent});
+    await target.client.sendOperation({operation: signedOperation});
     arr2.push(timer2.elapsed());
     deferred.resolve();
   }).catch(e => {
