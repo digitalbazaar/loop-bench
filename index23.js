@@ -94,15 +94,21 @@ function generate2({deferred}) {
   });
 }
 
+const arr = [];
+const arr0 = [];
 const arr1 = [];
 const arr2 = [];
 
 function generate3({deferred}) {
   const didDocs = [];
+  const timer = getTimer();
   veresDriver.generate({}).then(async didDocument => {
+    arr.push(timer.elapsed());
     didDocs.push(didDocument);
     const {doc} = didDocument;
+    const timer0 = getTimer();
     const [target] = await getEndpoints({hostnames: [hostname]});
+    arr0.push(timer0.elapsed());
     let operation = {
       '@context': 'https://w3id.org/webledger/v1',
       creator: target.targetNode,
@@ -193,6 +199,8 @@ suite
   })
   .on('complete', function() {
     console.log('Fastest is ' + this.filter('fastest').map('name'));
+    console.log(`Create DID - ${average(arr)}`);
+    console.log(`Gather endpoints - ${average(arr0)}`);
     console.log(`Attach Proof Duration - ${average(arr1)}`);
     console.log(`Send Operation Duration - ${average(arr2)}`);
 
