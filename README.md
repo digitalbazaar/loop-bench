@@ -73,3 +73,13 @@ Hardware Overview:
   Hyper-Threading Technology:	Enabled
   Memory:	16 GB
 ```
+
+# index23.js benchmark veres one did doc generation
+```
+node --version
+v12.13.0
+
+generate did document x 785 ops/sec ±11.96% (67 runs sampled)
+generate did document and gather endpoints x 504 ops/sec ±94.83% (70 runs sampled)
+generate did document, gather endpoints, and send did document x 16.98 ops/sec ±6.85% (45 runs sampled)
+```
