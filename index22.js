@@ -3,27 +3,35 @@ const rdfCanonize = require('rdf-canonize');
 const rdfCanonizeRust =
   require('../rust-node-bindgen-canonize/dist/index.node');
 const quads = require('./quads.json');
-
+const quads2 = require('./quads2.json');
 const suite = new Benchmark.Suite();
 
-function canonize(deferred) {
-  rdfCanonize.canonize(...quads).then(r => {
-    deferred.resolve(r);
-  }).catch(err => {
-    console.log('ERROR', err);
-  });
+function canonize(deferred, q) {
+  rdfCanonize.canonize(...q)
+    .then(r => deferred.resolve(r)).catch(console.error);
 }
 
 suite
-  .add('Rust canonize', {
+  .add('Rust canonize quads sync', {
     minSamples: 100,
     fn: () => rdfCanonizeRust.canonize(...quads)
   })
-  .add('JS canonize', {
+  .add('Rust canonize quads2 sync', {
+    minSamples: 100,
+    fn: () => rdfCanonizeRust.canonize(...quads2)
+  })
+  .add('JS canonize quads', {
     minSamples: 100,
     defer: true,
     fn: function(deferred) {
-      canonize(deferred);
+      canonize(deferred, quads);
+    }
+  })
+  .add('JS canonize quads2', {
+    minSamples: 100,
+    defer: true,
+    fn: function(deferred) {
+      canonize(deferred, quads2);
     }
   })
   .on('cycle', event => {
