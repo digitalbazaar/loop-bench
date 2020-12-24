@@ -1,0 +1,657 @@
+[
+  [
+    {
+      "subject": {
+        "termType": "BlankNode",
+        "value": "_:b0"
+      },
+      "predicate": {
+        "termType": "NamedNode",
+        "value": "http://example.org/vocab#p"
+      },
+      "object": {
+        "termType": "BlankNode",
+        "value": "_:b1"
+      },
+      "graph": {
+        "termType": "DefaultGraph",
+        "value": ""
+      }
+    },
+    {
+      "subject": {
+        "termType": "BlankNode",
+        "value": "_:b0"
+      },
+      "predicate": {
+        "termType": "NamedNode",
+        "value": "http://example.org/vocab#p"
+      },
+      "object": {
+        "termType": "BlankNode",
+        "value": "_:b2"
+      },
+      "graph": {
+        "termType": "DefaultGraph",
+        "value": ""
+      }
+    },
+    {
+      "subject": {
+        "termType": "BlankNode",
+        "value": "_:b0"
+      },
+      "predicate": {
+        "termType": "NamedNode",
+        "value": "http://example.org/vocab#p"
+      },
+      "object": {
+        "termType": "BlankNode",
+        "value": "_:b3"
+      },
+      "graph": {
+        "termType": "DefaultGraph",
+        "value": ""
+      }
+    },
+    {
+      "subject": {
+        "termType": "BlankNode",
+        "value": "_:b1"
+      },
+      "predicate": {
+        "termType": "NamedNode",
+        "value": "http://example.org/vocab#p"
+      },
+      "object": {
+        "termType": "BlankNode",
+        "value": "_:b0"
+      },
+      "graph": {
+        "termType": "DefaultGraph",
+        "value": ""
+      }
+    },
+    {
+      "subject": {
+        "termType": "BlankNode",
+        "value": "_:b1"
+      },
+      "predicate": {
+        "termType": "NamedNode",
+        "value": "http://example.org/vocab#p"
+      },
+      "object": {
+        "termType": "BlankNode",
+        "value": "_:b3"
+      },
+      "graph": {
+        "termType": "DefaultGraph",
+        "value": ""
+      }
+    },
+    {
+      "subject": {
+        "termType": "BlankNode",
+        "value": "_:b1"
+      },
+      "predicate": {
+        "termType": "NamedNode",
+        "value": "http://example.org/vocab#p"
+      },
+      "object": {
+        "termType": "BlankNode",
+        "value": "_:b4"
+      },
+      "graph": {
+        "termType": "DefaultGraph",
+        "value": ""
+      }
+    },
+    {
+      "subject": {
+        "termType": "BlankNode",
+        "value": "_:b2"
+      },
+      "predicate": {
+        "termType": "NamedNode",
+        "value": "http://example.org/vocab#p"
+      },
+      "object": {
+        "termType": "BlankNode",
+        "value": "_:b0"
+      },
+      "graph": {
+        "termType": "DefaultGraph",
+        "value": ""
+      }
+    },
+    {
+      "subject": {
+        "termType": "BlankNode",
+        "value": "_:b2"
+      },
+      "predicate": {
+        "termType": "NamedNode",
+        "value": "http://example.org/vocab#p"
+      },
+      "object": {
+        "termType": "BlankNode",
+        "value": "_:b4"
+      },
+      "graph": {
+        "termType": "DefaultGraph",
+        "value": ""
+      }
+    },
+    {
+      "subject": {
+        "termType": "BlankNode",
+        "value": "_:b2"
+      },
+      "predicate": {
+        "termType": "NamedNode",
+        "value": "http://example.org/vocab#p"
+      },
+      "object": {
+        "termType": "BlankNode",
+        "value": "_:b5"
+      },
+      "graph": {
+        "termType": "DefaultGraph",
+        "value": ""
+      }
+    },
+    {
+      "subject": {
+        "termType": "BlankNode",
+        "value": "_:b3"
+      },
+      "predicate": {
+        "termType": "NamedNode",
+        "value": "http://example.org/vocab#p"
+      },
+      "object": {
+        "termType": "BlankNode",
+        "value": "_:b0"
+      },
+      "graph": {
+        "termType": "DefaultGraph",
+        "value": ""
+      }
+    },
+    {
+      "subject": {
+        "termType": "BlankNode",
+        "value": "_:b3"
+      },
+      "predicate": {
+        "termType": "NamedNode",
+        "value": "http://example.org/vocab#p"
+      },
+      "object": {
+        "termType": "BlankNode",
+        "value": "_:b1"
+      },
+      "graph": {
+        "termType": "DefaultGraph",
+        "value": ""
+      }
+    },
+    {
+      "subject": {
+        "termType": "BlankNode",
+        "value": "_:b3"
+      },
+      "predicate": {
+        "termType": "NamedNode",
+        "value": "http://example.org/vocab#p"
+      },
+      "object": {
+        "termType": "BlankNode",
+        "value": "_:b5"
+      },
+      "graph": {
+        "termType": "DefaultGraph",
+        "value": ""
+      }
+    },
+    {
+      "subject": {
+        "termType": "BlankNode",
+        "value": "_:b4"
+      },
+      "predicate": {
+        "termType": "NamedNode",
+        "value": "http://example.org/vocab#p"
+      },
+      "object": {
+        "termType": "BlankNode",
+        "value": "_:b1"
+      },
+      "graph": {
+        "termType": "DefaultGraph",
+        "value": ""
+      }
+    },
+    {
+      "subject": {
+        "termType": "BlankNode",
+        "value": "_:b4"
+      },
+      "predicate": {
+        "termType": "NamedNode",
+        "value": "http://example.org/vocab#p"
+      },
+      "object": {
+        "termType": "BlankNode",
+        "value": "_:b2"
+      },
+      "graph": {
+        "termType": "DefaultGraph",
+        "value": ""
+      }
+    },
+    {
+      "subject": {
+        "termType": "BlankNode",
+        "value": "_:b4"
+      },
+      "predicate": {
+        "termType": "NamedNode",
+        "value": "http://example.org/vocab#p"
+      },
+      "object": {
+        "termType": "BlankNode",
+        "value": "_:b5"
+      },
+      "graph": {
+        "termType": "DefaultGraph",
+        "value": ""
+      }
+    },
+    {
+      "subject": {
+        "termType": "BlankNode",
+        "value": "_:b5"
+      },
+      "predicate": {
+        "termType": "NamedNode",
+        "value": "http://example.org/vocab#p"
+      },
+      "object": {
+        "termType": "BlankNode",
+        "value": "_:b3"
+      },
+      "graph": {
+        "termType": "DefaultGraph",
+        "value": ""
+      }
+    },
+    {
+      "subject": {
+        "termType": "BlankNode",
+        "value": "_:b5"
+      },
+      "predicate": {
+        "termType": "NamedNode",
+        "value": "http://example.org/vocab#p"
+      },
+      "object": {
+        "termType": "BlankNode",
+        "value": "_:b2"
+      },
+      "graph": {
+        "termType": "DefaultGraph",
+        "value": ""
+      }
+    },
+    {
+      "subject": {
+        "termType": "BlankNode",
+        "value": "_:b5"
+      },
+      "predicate": {
+        "termType": "NamedNode",
+        "value": "http://example.org/vocab#p"
+      },
+      "object": {
+        "termType": "BlankNode",
+        "value": "_:b4"
+      },
+      "graph": {
+        "termType": "DefaultGraph",
+        "value": ""
+      }
+    },
+    {
+      "subject": {
+        "termType": "BlankNode",
+        "value": "_:b6"
+      },
+      "predicate": {
+        "termType": "NamedNode",
+        "value": "http://example.org/vocab#p"
+      },
+      "object": {
+        "termType": "BlankNode",
+        "value": "_:b7"
+      },
+      "graph": {
+        "termType": "DefaultGraph",
+        "value": ""
+      }
+    },
+    {
+      "subject": {
+        "termType": "BlankNode",
+        "value": "_:b6"
+      },
+      "predicate": {
+        "termType": "NamedNode",
+        "value": "http://example.org/vocab#p"
+      },
+      "object": {
+        "termType": "BlankNode",
+        "value": "_:b8"
+      },
+      "graph": {
+        "termType": "DefaultGraph",
+        "value": ""
+      }
+    },
+    {
+      "subject": {
+        "termType": "BlankNode",
+        "value": "_:b6"
+      },
+      "predicate": {
+        "termType": "NamedNode",
+        "value": "http://example.org/vocab#p"
+      },
+      "object": {
+        "termType": "BlankNode",
+        "value": "_:b9"
+      },
+      "graph": {
+        "termType": "DefaultGraph",
+        "value": ""
+      }
+    },
+    {
+      "subject": {
+        "termType": "BlankNode",
+        "value": "_:b7"
+      },
+      "predicate": {
+        "termType": "NamedNode",
+        "value": "http://example.org/vocab#p"
+      },
+      "object": {
+        "termType": "BlankNode",
+        "value": "_:b6"
+      },
+      "graph": {
+        "termType": "DefaultGraph",
+        "value": ""
+      }
+    },
+    {
+      "subject": {
+        "termType": "BlankNode",
+        "value": "_:b7"
+      },
+      "predicate": {
+        "termType": "NamedNode",
+        "value": "http://example.org/vocab#p"
+      },
+      "object": {
+        "termType": "BlankNode",
+        "value": "_:b10"
+      },
+      "graph": {
+        "termType": "DefaultGraph",
+        "value": ""
+      }
+    },
+    {
+      "subject": {
+        "termType": "BlankNode",
+        "value": "_:b7"
+      },
+      "predicate": {
+        "termType": "NamedNode",
+        "value": "http://example.org/vocab#p"
+      },
+      "object": {
+        "termType": "BlankNode",
+        "value": "_:b11"
+      },
+      "graph": {
+        "termType": "DefaultGraph",
+        "value": ""
+      }
+    },
+    {
+      "subject": {
+        "termType": "BlankNode",
+        "value": "_:b8"
+      },
+      "predicate": {
+        "termType": "NamedNode",
+        "value": "http://example.org/vocab#p"
+      },
+      "object": {
+        "termType": "BlankNode",
+        "value": "_:b6"
+      },
+      "graph": {
+        "termType": "DefaultGraph",
+        "value": ""
+      }
+    },
+    {
+      "subject": {
+        "termType": "BlankNode",
+        "value": "_:b8"
+      },
+      "predicate": {
+        "termType": "NamedNode",
+        "value": "http://example.org/vocab#p"
+      },
+      "object": {
+        "termType": "BlankNode",
+        "value": "_:b10"
+      },
+      "graph": {
+        "termType": "DefaultGraph",
+        "value": ""
+      }
+    },
+    {
+      "subject": {
+        "termType": "BlankNode",
+        "value": "_:b8"
+      },
+      "predicate": {
+        "termType": "NamedNode",
+        "value": "http://example.org/vocab#p"
+      },
+      "object": {
+        "termType": "BlankNode",
+        "value": "_:b11"
+      },
+      "graph": {
+        "termType": "DefaultGraph",
+        "value": ""
+      }
+    },
+    {
+      "subject": {
+        "termType": "BlankNode",
+        "value": "_:b9"
+      },
+      "predicate": {
+        "termType": "NamedNode",
+        "value": "http://example.org/vocab#p"
+      },
+      "object": {
+        "termType": "BlankNode",
+        "value": "_:b6"
+      },
+      "graph": {
+        "termType": "DefaultGraph",
+        "value": ""
+      }
+    },
+    {
+      "subject": {
+        "termType": "BlankNode",
+        "value": "_:b9"
+      },
+      "predicate": {
+        "termType": "NamedNode",
+        "value": "http://example.org/vocab#p"
+      },
+      "object": {
+        "termType": "BlankNode",
+        "value": "_:b10"
+      },
+      "graph": {
+        "termType": "DefaultGraph",
+        "value": ""
+      }
+    },
+    {
+      "subject": {
+        "termType": "BlankNode",
+        "value": "_:b9"
+      },
+      "predicate": {
+        "termType": "NamedNode",
+        "value": "http://example.org/vocab#p"
+      },
+      "object": {
+        "termType": "BlankNode",
+        "value": "_:b11"
+      },
+      "graph": {
+        "termType": "DefaultGraph",
+        "value": ""
+      }
+    },
+    {
+      "subject": {
+        "termType": "BlankNode",
+        "value": "_:b10"
+      },
+      "predicate": {
+        "termType": "NamedNode",
+        "value": "http://example.org/vocab#p"
+      },
+      "object": {
+        "termType": "BlankNode",
+        "value": "_:b7"
+      },
+      "graph": {
+        "termType": "DefaultGraph",
+        "value": ""
+      }
+    },
+    {
+      "subject": {
+        "termType": "BlankNode",
+        "value": "_:b10"
+      },
+      "predicate": {
+        "termType": "NamedNode",
+        "value": "http://example.org/vocab#p"
+      },
+      "object": {
+        "termType": "BlankNode",
+        "value": "_:b8"
+      },
+      "graph": {
+        "termType": "DefaultGraph",
+        "value": ""
+      }
+    },
+    {
+      "subject": {
+        "termType": "BlankNode",
+        "value": "_:b10"
+      },
+      "predicate": {
+        "termType": "NamedNode",
+        "value": "http://example.org/vocab#p"
+      },
+      "object": {
+        "termType": "BlankNode",
+        "value": "_:b9"
+      },
+      "graph": {
+        "termType": "DefaultGraph",
+        "value": ""
+      }
+    },
+    {
+      "subject": {
+        "termType": "BlankNode",
+        "value": "_:b11"
+      },
+      "predicate": {
+        "termType": "NamedNode",
+        "value": "http://example.org/vocab#p"
+      },
+      "object": {
+        "termType": "BlankNode",
+        "value": "_:b7"
+      },
+      "graph": {
+        "termType": "DefaultGraph",
+        "value": ""
+      }
+    },
+    {
+      "subject": {
+        "termType": "BlankNode",
+        "value": "_:b11"
+      },
+      "predicate": {
+        "termType": "NamedNode",
+        "value": "http://example.org/vocab#p"
+      },
+      "object": {
+        "termType": "BlankNode",
+        "value": "_:b8"
+      },
+      "graph": {
+        "termType": "DefaultGraph",
+        "value": ""
+      }
+    },
+    {
+      "subject": {
+        "termType": "BlankNode",
+        "value": "_:b11"
+      },
+      "predicate": {
+        "termType": "NamedNode",
+        "value": "http://example.org/vocab#p"
+      },
+      "object": {
+        "termType": "BlankNode",
+        "value": "_:b9"
+      },
+      "graph": {
+        "termType": "DefaultGraph",
+        "value": ""
+      }
+    }
+  ],
+  {
+    "algorithm": "URDNA2015",
+    "inputFormat": "application/n-quads",
+    "format": "application/n-quads"
+  }
+]
