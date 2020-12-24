@@ -16,7 +16,7 @@
     "eslint-config-digitalbazaar": "^1.5.0",
     "fast-json-stringify": "^1.10.0",
     "ioredis": "^3.2.2",
-    "jsonld": "^1.0.4",
+    "jsonld": "^3.2.0",
     "lodash": "^4.17.11",
     "msgpack5": "^4.2.0",
     "multibase": "^0.6.0",
@@ -24,7 +24,7 @@
     "protobufjs": "~6.8.8",
     "rdf-canonize": "^1.2.0",
     "redis": "^2.8.0",
-    "web-ledger-context": "^4.0.0"
+    "web-ledger-context": "^8.0.0"
   },
   "optionalDependencies": {
     "rdf-canonize-native": "^1.1.2"
