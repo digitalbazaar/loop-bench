@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "base58-universal": "^1.0.0",
     "base64url": "^3.0.0",
     "benchmark": "^2.1.4",
     "benny": "^3.6.15",
