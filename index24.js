@@ -2,7 +2,7 @@ const _ = require('lodash');
 const bs58 = require('base58-universal');
 const rdfCanonize = require('rdf-canonize');
 const rdfCanonizeRust =
-  require('../rust-node-bindgen-canonize/dist/index.node');
+  require('./rdf-canonize-rust/index.node');
 const quadsMergeEvent = require('./quads-merge-event.json');
 const crypto = require('crypto');
 const utils = require('./utils');

@@ -1,7 +1,7 @@
 const Benchmark = require('benchmark');
 const rdfCanonize = require('rdf-canonize');
 const rdfCanonizeRust =
-  require('../rust-node-bindgen-canonize/dist/index.node');
+require('./rdf-canonize-rust/index.node');
 const quads = require('./quads.json');
 const quads2 = require('./quads2.json');
 const quadsMergeEvent = require('./quads-merge-event.json');
