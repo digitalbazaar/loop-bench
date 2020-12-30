@@ -40,7 +40,7 @@ _:b0 <https://w3id.org/webledger#parentHash> "FV9ZZp89GRGi3aPHvikqqXa1JM2if83Q39
 _:b0 <https://w3id.org/webledger#parentHash> "Ge7qDheGToDqgYtDTiNXWf2zJfTLr6i8itwDakg4ubD3" .
 _:b0 <https://w3id.org/webledger#parentHash> "Mbv1iJmwrM2diDxjrtrW8BxfpwFtprjFF8HJGvNumvy" .
 _:b0 <https://w3id.org/webledger#treeHash> "3RTwPo9MUk2s3vb1WdUD2P9zvQ8Le6bajqwBGVFg2BHr" .
-_:b2 <http://purl.org/dc/terms/created> "2020-12-29T21:12:26Z.269Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> _:b1 .
+_:b2 <http://purl.org/dc/terms/created> "2020-12-29T21:12:26.269Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> _:b1 .
 _:b2 <http://purl.org/dc/terms/creator> <https://bedrock.localhost:18443/consensus/continuity2017/voters/z6MkkabTusFkLnquxwHwCm28v59UX3P9Pn5scvc7fCaNvWUL> _:b1 .
 _:b2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/security#Ed25519Signature2018> _:b1 .
 _:b2 <https://w3id.org/security#jws> "eyJhbGciOiJFZERTQSIsImI2NCI6ZmFsc2UsImNyaXQiOlsiYjY0Il19..JJ5c7mF7ru9XhPtrNqj1s6J74yqOC0HcNyK_Wa0OcfDaiODZFIJ2dXIrc_qqqvTWynIqJid6yXkKsGAzyi_HDQ" _:b1 .
