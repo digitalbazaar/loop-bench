@@ -22,9 +22,7 @@ function generateEvents() {
   for(let i = 0; i < 100000; ++i) {
     const event = _.cloneDeep(mergeEvent);
     const md = crypto.createHash('sha256');
-    // FIXME:
-    // event.proof.created = new Date().toISOString();
-    event.proof.created = '2020-12-29T21:12:26';
+    event.proof.created = new Date().toISOString();
     event.treeHash =
       bs58.encode(md.digest(md.update(Math.random().toString())));
     for(let i = 0; i < 13; ++i) {

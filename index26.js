@@ -17,7 +17,7 @@ const readInterface = readline.createInterface({
     if(lineCount % 20 === 0) {
       const parsedInput = await rdfCanonize.NQuads.parse(string);
       // console.log('PPPPP', parsedInput);
-      const result = await rdfCanonize.canonizeSync(parsedInput, {
+      const result = await rdfCanonize.canonize(parsedInput, {
         inputFormat: 'application/n-quads',
         algorithm: 'URDNA2015',
       });
