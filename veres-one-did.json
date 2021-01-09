@@ -1,0 +1,64 @@
+{
+  "@context": "https://w3id.org/webledger/v1",
+  "creator": "https://ashburn.capybara.veres.one/consensus/continuity2017/voters/z6MkgTBtCodgNvf1SaQLRbCppkVMo7BggAP4NohtPY8ZNqic",
+  "type": "CreateWebLedgerRecord",
+  "record": {
+    "@context": [
+      "https://w3id.org/did/v0.11",
+      "https://w3id.org/veres-one/v1"
+    ],
+    "id": "did:v1:test:nym:z6Mkh3arHDEehcTa4QyZBMaks96DzcpMWESsFV7R4SmHpt8d",
+    "authentication": [
+      {
+        "id": "did:v1:test:nym:z6Mkh3arHDEehcTa4QyZBMaks96DzcpMWESsFV7R4SmHpt8d#z6MkjXWUNtoT9e1BDSt5zLmMuY7k9u99euxCQiduXCTwrY2u",
+        "type": "Ed25519VerificationKey2018",
+        "controller": "did:v1:test:nym:z6Mkh3arHDEehcTa4QyZBMaks96DzcpMWESsFV7R4SmHpt8d",
+        "publicKeyBase58": "65FRneZ1p6Wi6x3PJmoX4SZkLKsJF2hqihiygvVvwKFX"
+      }
+    ],
+    "capabilityInvocation": [
+      {
+        "id": "did:v1:test:nym:z6Mkh3arHDEehcTa4QyZBMaks96DzcpMWESsFV7R4SmHpt8d#z6Mkh3arHDEehcTa4QyZBMaks96DzcpMWESsFV7R4SmHpt8d",
+        "type": "Ed25519VerificationKey2018",
+        "controller": "did:v1:test:nym:z6Mkh3arHDEehcTa4QyZBMaks96DzcpMWESsFV7R4SmHpt8d",
+        "publicKeyBase58": "3bKogxzDN4y6wv8rVncv23YEB3YW6MCWZUCVEAoGufMF"
+      }
+    ],
+    "capabilityDelegation": [
+      {
+        "id": "did:v1:test:nym:z6Mkh3arHDEehcTa4QyZBMaks96DzcpMWESsFV7R4SmHpt8d#z6MknXoqGqfAG7vjBTPqNZjf1HWcMD2c5csTCkdkY62S8BRy",
+        "type": "Ed25519VerificationKey2018",
+        "controller": "did:v1:test:nym:z6Mkh3arHDEehcTa4QyZBMaks96DzcpMWESsFV7R4SmHpt8d",
+        "publicKeyBase58": "95YngbQivaSG4xZ8gzmpABxcXdkkfjd6Wjiphp4RCxeb"
+      }
+    ],
+    "assertionMethod": [
+      {
+        "id": "did:v1:test:nym:z6Mkh3arHDEehcTa4QyZBMaks96DzcpMWESsFV7R4SmHpt8d#z6MkqVQKNUG994U8mK6p7CX6PMtijsgDuhQBUEXgfAPCqQEP",
+        "type": "Ed25519VerificationKey2018",
+        "controller": "did:v1:test:nym:z6Mkh3arHDEehcTa4QyZBMaks96DzcpMWESsFV7R4SmHpt8d",
+        "publicKeyBase58": "C39GnE1hoWyfepG7RdZFYGLivJQNVp9pnDckptRBvBT1"
+      }
+    ]
+  },
+  "proof": [
+    {
+      "type": "Ed25519Signature2018",
+      "created": "2021-01-09T20:50:08Z",
+      "creator": "did:v1:test:nym:z279yHL6HsxRzCPU78DAWgZVieb8xPK1mJKJBbP8T2CezuFY#z279yHL6HsxRzCPU78DAWgZVieb8xPK1mJKJBbP8T2CezuFY",
+      "capability": "did:v1:uuid:c37e914a-1e2a-4d59-9668-ee93458fd19a",
+      "capabilityAction": "write",
+      "jws": "MOCKPROOF",
+      "proofPurpose": "capabilityInvocation"
+    },
+    {
+      "type": "Ed25519Signature2018",
+      "created": "2021-01-09T20:50:08Z",
+      "verificationMethod": "did:v1:test:nym:z6Mkh3arHDEehcTa4QyZBMaks96DzcpMWESsFV7R4SmHpt8d#z6Mkh3arHDEehcTa4QyZBMaks96DzcpMWESsFV7R4SmHpt8d",
+      "proofPurpose": "capabilityInvocation",
+      "capability": "did:v1:test:nym:z6Mkh3arHDEehcTa4QyZBMaks96DzcpMWESsFV7R4SmHpt8d",
+      "capabilityAction": "create",
+      "jws": "eyJhbGciOiJFZERTQSIsImI2NCI6ZmFsc2UsImNyaXQiOlsiYjY0Il19..u_T7y7P_woiPmpxfnY0rDdA_o25A9m9BOUfXu4zc1PqfIs92Po8sJn_D2xSPI2Ijuz22T6YibLtud1NgvFO1BQ"
+    }
+  ]
+}
