@@ -1,3 +1,4 @@
+const _ = require('lodash');
 const Benchmark = require('benchmark');
 const rdfCanonize = require('rdf-canonize');
 const rdfCanonizeRust =
@@ -12,19 +13,27 @@ function canonize(deferred, quads) {
     .then(r => deferred.resolve(r)).catch(console.error);
 }
 
+const rustQuads = _.cloneDeep(quads);
+for(const q of rustQuads[0]) {
+  for(const [, v] of Object.entries(q)) {
+    v.value = Buffer.from(v.value, 'utf-8');
+    // console.log('JJJJJJJJJJ', v);
+  }
+}
+
 suite
   .add('Rust canonize quads sync', {
     minSamples: 100,
-    fn: () => rdfCanonizeRust.canonize(...quads)
+    fn: () => rdfCanonizeRust.canonize(...rustQuads)
   })
-  .add('Rust canonize quads2 sync', {
-    minSamples: 100,
-    fn: () => rdfCanonizeRust.canonize(...quads2)
-  })
-  .add('Rust canonize quadsMergeEvent sync', {
-    minSamples: 100,
-    fn: () => rdfCanonizeRust.canonize(...quadsMergeEvent)
-  })
+  // .add('Rust canonize quads2 sync', {
+  //   minSamples: 100,
+  //   fn: () => rdfCanonizeRust.canonize(...quads2)
+  // })
+  // .add('Rust canonize quadsMergeEvent sync', {
+  //   minSamples: 100,
+  //   fn: () => rdfCanonizeRust.canonize(...quadsMergeEvent)
+  // })
   .add('JS canonize quads', {
     minSamples: 100,
     defer: true,
